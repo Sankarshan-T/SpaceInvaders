@@ -1,4 +1,5 @@
 import pygame, sys
+from spaceship import Spaceship
 
 
 pygame.init()
