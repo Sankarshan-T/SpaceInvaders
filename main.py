@@ -13,15 +13,23 @@ pygame.display.set_caption("Space Invaders")
 
 clock = pygame.time.Clock()
 
+spaceship = Spaceship(SCREEN_WIDTH, SCREEN_HEIGHT)
+spaceship_group = pygame.sprite.GroupSingle()
+spaceship_group.add(spaceship)
+
 while True:
     #check for events
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+            
+    #Update:
+    spaceship_group.update()
 
     #Drawing
     screen.fill(GREY)
+    spaceship_group.draw(screen)
 
     pygame.display.update()
     clock.tick(60)
