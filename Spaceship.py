@@ -1,6 +1,7 @@
 import pygame
 from laser import Laser
 
+
 class Spaceship(pygame.sprite.Sprite):
     def __init__(self, screen_width, screen_height):
         super().__init__()
