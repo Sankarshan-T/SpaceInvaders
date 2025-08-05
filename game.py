@@ -24,6 +24,9 @@ class Game:
         self.score = 0
         self.highscore = 0
         self.load_highscore()
+        pygame.mixer.music.load("Sound/Music.mp3")
+        pygame.mixer.music.set_volume(0.03)
+        pygame.mixer.music.play(-1)
 
     def create_obstacles(self):
         obstacle_width = len(grid[0] * 3)
