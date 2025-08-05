@@ -7,11 +7,12 @@ from alien import MysteryShip
 
 
 class Game:
-    def __init__(self, screen_width, screen_height):
+    def __init__(self, screen_width, screen_height, offset):
         self.screen_width = screen_width
         self.screen_height = screen_height
+        self.offset = offset
         self.spaceship_group = pygame.sprite.GroupSingle()
-        self.spaceship_group.add(Spaceship(self.screen_width, self.screen_height))
+        self.spaceship_group.add(Spaceship(self.screen_width, self.screen_height -50, self.offset))
         self.obstacles = self.create_obstacles()
         self.aliens_group = pygame.sprite.Group()
         self.create_aliens()
@@ -27,15 +28,15 @@ class Game:
         obstacles = []
         for i in range(4):
             offset_x = (i + 1) * gap + i * obstacle_width
-            obstacle = Obstacle(offset_x, self.screen_height - 100) 
+            obstacle = Obstacle(offset_x + 25, self.screen_height - 150) 
             obstacles.append(obstacle)
         return obstacles
     
     def create_aliens(self):
         for row in range(5):
-            for column in range(11):
-                x = 100 + column * 55
-                y = 80 + row * 55
+            for column in range(9):
+                x = 75 + column * 55
+                y = 100 + row * 55
 
                 if row == 0:
                     alien_type = 3
@@ -54,10 +55,10 @@ class Game:
         for alien in alien_sprites:
             if alien.rect.right >= self.screen_width:
                 self.aliens_direction = -1
-                self.alien_move_down(2)
+                self.alien_move_down(1)
             elif alien.rect.left <= 0:
                 self.aliens_direction = 1
-                self.alien_move_down(2)
+                self.alien_move_down(1)
 
     def alien_move_down(self, distance):
         if self.aliens_group:

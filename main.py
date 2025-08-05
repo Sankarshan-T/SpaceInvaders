@@ -4,16 +4,19 @@ from game import Game
 
 pygame.init()
 
-SCREEN_WIDTH = 800
+SCREEN_WIDTH = 600
 SCREEN_HEIGHT = 600
-GREY = (29, 29, 27)
+OFFSET = 30
 
-screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+GREY = (29, 29, 27)
+YELLOW = (243, 216, 63)
+
+screen = pygame.display.set_mode((SCREEN_WIDTH + 2*OFFSET, SCREEN_HEIGHT + 2*OFFSET))
 pygame.display.set_caption("Space Invaders")
 
 clock = pygame.time.Clock()
 
-game = Game(SCREEN_WIDTH, SCREEN_HEIGHT)
+game = Game(SCREEN_WIDTH, SCREEN_HEIGHT, OFFSET)
 
 SHOOT_LASER = pygame.USEREVENT
 pygame.time.set_timer(SHOOT_LASER, 300)
@@ -50,6 +53,8 @@ while True:
 
     #Drawing
     screen.fill(GREY)
+    pygame.draw.rect(screen, YELLOW, (OFFSET, OFFSET, SCREEN_WIDTH, SCREEN_HEIGHT), 2, 0, 60, 60, 60,60)
+    pygame.draw.line(screen, YELLOW, (40, 580), (620, 580), 3)
     game.spaceship_group.draw(screen)
     game.spaceship_group.sprite.lasers_group.draw(screen)
     for obstacle in game.obstacles:
