@@ -15,6 +15,7 @@ font = pygame.font.Font("Fonts/monogram.ttf", 40)
 level_surface = font.render("LEVEL 01", False, YELLOW)
 game_over_surface = font.render("GAME OVER", False, YELLOW)
 score_text_surface = font.render("SCORE", False, YELLOW)
+highscore_text_surface = font.render("HIGH-SCORE", False, YELLOW)
 
 screen = pygame.display.set_mode((SCREEN_WIDTH + 2*OFFSET, SCREEN_HEIGHT + 2*OFFSET))
 pygame.display.set_caption("Space Invaders")
@@ -77,6 +78,10 @@ while True:
     formatted_score = str(game.score).zfill(5)
     score_surface = font.render(formatted_score, False, YELLOW)
     screen.blit(score_surface, ((60, 65, 50, 50)))
+    screen.blit(highscore_text_surface, (500, 40, 50, 50))
+    formatted_highscore = str(game.highscore).zfill(5)
+    highscore_surface = font.render(formatted_highscore, False, YELLOW)
+    screen.blit(highscore_surface, (575, 65, 50, 50))
 
 
     game.spaceship_group.draw(screen)

@@ -22,6 +22,8 @@ class Game:
         self.lives = 3
         self.run = True
         self.score = 0
+        self.highscore = 0
+        self.load_highscore()
 
     def create_obstacles(self):
         obstacle_width = len(grid[0] * 3)
@@ -85,11 +87,13 @@ class Game:
                 if aliens_hit:
                     for alien in aliens_hit:
                         self.score +=  alien.type * 100
+                        self.check_for_highscore()
                         laser_sprite.kill()
 
 
                 if pygame.sprite.spritecollide(laser_sprite, self.mystery_ship_group, True):
                     self.score +=  500
+                    self.check_for_highscore()
                     laser_sprite.kill()
 
 
@@ -130,3 +134,17 @@ class Game:
         self.mystery_ship_group.empty()
         self.obstacles = self.create_obstacles()
         self.score = 0
+
+    def check_for_highscore(self):
+        if self.score > self.highscore:
+            self.highscore = self.score
+
+            with open('highscore.txt', 'w') as file:
+                file.write(str(self.highscore))
+
+    def load_highscore(self):
+        try:
+            with open('highscore.txt', 'r') as file:
+                self.highscore = int(file.read())
+        except FileNotFoundError:
+            self.highscore = 0
