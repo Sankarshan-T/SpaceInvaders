@@ -11,7 +11,6 @@ OFFSET = 30
 GREY = (29, 29, 27)
 YELLOW = (243, 216, 63)
 
-RESTART_EVENT = pygame.USEREVENT + 1
 
 font = pygame.font.Font("Fonts/monogram.ttf", 40)
 level_surface = font.render("LEVEL 01", False, YELLOW)
@@ -40,25 +39,14 @@ while True:
             pygame.quit()
             sys.exit()
             running = False
-            
+
         if event.type == SHOOT_LASER and game.run:
             game.alien_shoot_laser()
 
         if event.type == MYSTERYSHIP and game.run:
             game.create_mystery_ship()
             pygame.time.set_timer(MYSTERYSHIP, random.randint(4000,8000))
-
-        if event.type == RESTART_EVENT:
-            game.reset()
-            pygame.time.set_timer(RESTART_EVENT, 0)
-
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_SPACE] and game.run == False:
-            pygame.time.set_timer(RESTART_EVENT, 10000)
-
-            
-
-
+   
     #Update: 
     if game.run:   
         game.spaceship_group.update()
