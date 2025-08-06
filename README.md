@@ -6,9 +6,10 @@ Dodge, shoot, and survive the ultimate space invasion!
 
 Instructions to play:<br>
 Step - 1: Download the .zip file <br>
-Step - 2: Extract it <br>
-Step - 3: Run the SpaceInvaders.exe file. <br>
-Step - 4: The game starts as soon as you open it.<br>
+Step - 2: Extract the .zip file <br>
+Step - 3: Run the SpaceInvaders.exe file. <br> 
+!! Warning !! DO NOT DELETE ANY OTHER FILE IN THE FOLDER. ELSE, THE GAME WILL NOT RUN <br>
+Step - 4: The console opens and game starts as soon the window opens.<br>
 
 <br>
 <br>
